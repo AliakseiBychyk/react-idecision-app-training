@@ -1,9 +1,14 @@
 console.log('App.js is runing!')
 
+var app = {
+  'title': 'Indecision App',
+  'subtitle': 'This is some info'
+}
+
 var template = (
   <div>
-    <h1>Indecision App</h1>
-    <p>This is some info</p>
+    <h1>{app.title}</h1>
+    <p>{app.subtitle}</p>
     <ol>
       <li>Item one</li>
       <li>Item two</li>
@@ -12,14 +17,19 @@ var template = (
   </div>
 )
 
-var userName = 'Aleks Bychyk'
-var userAge = 45
-var userLocation = 'Brest, Belarus'
+var user = {
+  'name': 'Aliaksei Bychyk',
+  'age': 45,
+  'location': 'Brest, Belarus'
+}
+// var userName = 'Aleks Bychyk'
+// var userAge = 45
+// var userLocation = 'Brest, Belarus'
 var templateTwo = (
   <div>
-    <h1>{userName}</h1>
-    <p>Age: {userAge}</p>
-    <p>Location: {userLocation}</p>
+    <h1>{user.name}</h1>
+    <p>Age: {user.age}</p>
+    <p>Location: {user.location}</p>
   </div>
 )
 
