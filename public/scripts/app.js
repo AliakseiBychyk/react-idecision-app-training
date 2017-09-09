@@ -1,11 +1,13 @@
-console.log('App.js is runing!')
+'use strict';
 
-// var template = <p>This is JSX from app.js!</p>
+console.log('App.js is runing!');
+
 var template = React.createElement(
-  'h1',
-  {id: 'someid'},
-  'Something new!'
-)
-var appRoot = document.getElementById('app')
+  'p',
+  null,
+  'This is JSX from app.js! And I change it! Does it change!?'
+);
 
-ReactDOM.render(template, appRoot)
+var appRoot = document.getElementById('app');
+
+ReactDOM.render(template, appRoot);
