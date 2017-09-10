@@ -2,13 +2,18 @@ console.log('App.js is runing!')
 
 var app = {
   'title': 'Indecision App',
-  'subtitle': 'This is some info'
+  'subtitle': 'This is some info',
+  'options': ['One', 'Two', 'Three']
 }
 
 var template = (
   <div>
     <h1>{app.title}</h1>
-    <p>{app.subtitle}</p>
+    {app.subtitle && <p>{app.subtitle}</p>}
+    <p>{app.options.length > 0
+          ? 'Here are your options'
+          : 'No options'}
+    </p>
     <ol>
       <li>Item one</li>
       <li>Item two</li>
@@ -30,7 +35,7 @@ function getLocation (location) {
 var templateTwo = (
   <div>
     <h1>{user.name ? user.name : 'Anonymous'}</h1>
-    {user.name >= 18 && <p>Age: {user.age}</p>}
+    {(user.name && user.name >= 18) && <p>Age: {user.age}</p>}
     {getLocation(user.location)}
   </div>
 )
