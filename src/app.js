@@ -22,14 +22,17 @@ var user = {
   'age': 45,
   'location': 'Brest, Belarus'
 }
-// var userName = 'Aleks Bychyk'
-// var userAge = 45
-// var userLocation = 'Brest, Belarus'
+
+function getLocation (location) {
+  if (location) return location
+  return 'Unknown'
+}
+
 var templateTwo = (
   <div>
     <h1>{user.name}</h1>
     <p>Age: {user.age}</p>
-    <p>Location: {user.location}</p>
+    <p>Location: {getLocation(user.location)}</p>
   </div>
 )
 

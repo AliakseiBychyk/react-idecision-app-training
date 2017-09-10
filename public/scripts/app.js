@@ -45,10 +45,14 @@ var user = {
   'name': 'Aliaksei Bychyk',
   'age': 45,
   'location': 'Brest, Belarus'
-  // var userName = 'Aleks Bychyk'
-  // var userAge = 45
-  // var userLocation = 'Brest, Belarus'
-};var templateTwo = React.createElement(
+};
+
+function getLocation(location) {
+  if (location) return location;
+  return 'Unknown';
+}
+
+var templateTwo = React.createElement(
   'div',
   null,
   React.createElement(
@@ -66,7 +70,7 @@ var user = {
     'p',
     null,
     'Location: ',
-    user.location
+    getLocation(user.location)
   )
 );
 
