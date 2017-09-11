@@ -10,8 +10,10 @@ const renderApp = () => {
   const template = (
     <div>
       <h1>Visibility Toggle</h1>
-      <button onClick={onToggleVisible}>Show details</button>
-      {visible && <p>Hey. There are some details you can now see!</p>}
+      <button onClick={onToggleVisible}>
+        {visible ? 'Hide details' : 'Show details'}
+      </button>
+      {visible && <p>Hey. These are some details you can now see!</p>}
     </div>
   )
 

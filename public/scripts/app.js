@@ -20,12 +20,12 @@ var renderApp = function renderApp() {
     React.createElement(
       'button',
       { onClick: onToggleVisible },
-      'Show details'
+      visible ? 'Hide details' : 'Show details'
     ),
     visible && React.createElement(
       'p',
       null,
-      'Hey. There are some details you can now see!'
+      'Hey. These are some details you can now see!'
     )
   );
 
