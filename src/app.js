@@ -6,21 +6,54 @@ const app = {
   'options': ['One', 'Two', 'Three']
 }
 
-const template = (
-  <div>
-    <h1>{app.title}</h1>
-    {app.subtitle && <p>{app.subtitle}</p>}
-    <p>{app.options.length > 0
-          ? 'Here are your options'
-          : 'No options'}
-    </p>
-    <ol>
-      <li>Item one</li>
-      <li>Item two</li>
-      <li>Item three</li>
-    </ol>
-  </div>
-)
+const onFormSubmit = (e) => {
+  e.preventDefault()
+  const option = e.target.elements.option.value
+  if (option) {
+    app.options.push(option)
+    e.target.elements.option.value = ''
+    renderApp()
+  }
+}
+
+const onRemoveAll = () => {
+  app.options = []
+  renderApp()
+}
+
+const appRoot = document.getElementById('app')
+
+const renderApp = () => {
+
+  const template = (
+    <div>
+      <h1>{app.title}</h1>
+      {app.subtitle && <p>{app.subtitle}</p>}
+      <p>{app.options.length > 0
+            ? 'Here are your options'
+            : 'No options'}
+      </p>
+      <button onClick={onRemoveAll}>Remove All</button>
+      <ol>
+        <li>Item one</li>
+        <li>Item two</li>
+        <li>Item three</li>
+      </ol>
+      <form onSubmit={onFormSubmit}>
+        <input type="text" name="option" />
+        <button>Add Option</button>
+        
+      </form>
+    </div>
+  )
+ 
+  ReactDOM.render(template, appRoot)
+}
+
+
+renderApp()
+
+///////
 
 const user = {
   'name': 'Aliaksei Bychyk',
@@ -40,38 +73,4 @@ const templateTwo = (
   </div>
 )
 
-
-let count = 0
-
-const addOne = () => {
-  count++
-  renderConterApp()
-}
-
-const minusOne = () => {
-  count--
-  renderConterApp()
-}
-
-const reset = () => {
-  count = 0
-  renderConterApp()
-}
-
-const appRoot = document.getElementById('app')
-
-const renderConterApp = () => {
-  const templateThree = (
-    <div>
-      <h1>Count: {count}</h1>
-      <button onClick={dddOne}>+1</button>
-      <button onClick={minusOne}>-1</button>
-      <button onClick={reset}>reset</button>
-    </div>
-  )
-
-  ReactDOM.render(templateThree, appRoot)
-}
-
-renderConterApp()
 
