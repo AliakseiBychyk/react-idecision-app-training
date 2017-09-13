@@ -2,7 +2,7 @@ console.log('App.js is runing!')
 
 const app = {
   'title': 'Indecision App',
-  'subtitle': 'This is some info',
+  'subtitle': 'This is some info - put your life in the hand of a computer',
   'options': ['One', 'Two', 'Three']
 }
 
@@ -21,6 +21,12 @@ const onRemoveAll = () => {
   renderApp()
 }
 
+const onMakeDesicion = () => {
+  const randomNum = Math.floor(Math.random() * app.options.length)
+  const option = app.options[randomNum]
+  alert(option)
+}
+
 const appRoot = document.getElementById('app')
 
 const numbers = [55, 101, 1000]
@@ -35,6 +41,7 @@ const renderApp = () => {
             ? 'Here are your options'
             : 'No options'}
       </p>
+      <button disabled={false} onClick={onMakeDesicion}>What should I do?</button>
       <button onClick={onRemoveAll}>Remove All</button>
       {
         numbers.map(number => (
