@@ -37,18 +37,12 @@ class Actions extends React.Component {
   }
 }
 
-// Options -> Options component here
-// Setup options prop for Options component 
-// Render the length of the array
-// Render new tag for each option (set text, set key)
-
 class Options extends React.Component{
   render(){
     return(
       <div>
-        Options component here 
         {this.props.options.map(option =>
-          <p key={option} >{option}</p>
+          <Option key={option} text={option} />
         )}
         <Option />
       </div>
@@ -56,16 +50,16 @@ class Options extends React.Component{
   }
 }
 
-// Option -> Option component here
 class Option extends React.Component {
   render() {
     return (
-      <div>Option component here</div>
+      <div>
+        {this.props.text}  
+      </div>
     )
   }
 }
 
-// AddOption -> AddOption component here
 class AddOption extends React.Component{
   render(){
     return (
