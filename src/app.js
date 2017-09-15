@@ -1,3 +1,15 @@
+const obj = {
+  name: 'Vikram',
+  getName() {
+    return this.name
+  }
+}
+
+// const getName = obj.getName.bind(obj)
+const getName = obj.getName.bind({name: 'Andrew'}) // bind the context in which we call the method
+console.log(getName())
+
+
 class IndecisionApp extends React.Component {
   render() {
     const title = 'Indecision'
@@ -40,21 +52,24 @@ class Actions extends React.Component {
   }
 }
 
-// Add Remove All button
-// Setup handleRemoveAll -> alert some message
-// setup onClick to fire the method
-
 class Options extends React.Component{
+  constructor(props) {
+    super(props)   
+    this.handleRemoveAll = this.handleRemoveAll.bind(this)
+  }
   handleRemoveAll() {
-    alert('remove all options')
+    console.log(this.props.options)
+    // alert('remove all options')
   }
   render(){
     return(
       <div>
-        {this.props.options.map(option =>
-          <Option key={option} text={option} />
-        )}
-        <button onClick={this.hadleRemoveAll} >Remove All</button>
+        <button onClick={this.handleRemoveAll} >Remove All</button>  
+        {
+          this.props.options.map(option =>
+            <Option key={option} text={option} />
+          )
+        }
       </div>
     )
   }
@@ -70,24 +85,18 @@ class Option extends React.Component {
   }
 }
 
-// 1. Setup the form with text input and submit button
-// 2. Wire up onSubmit
-// 3. handleAddOption -> fetch the value typed -> if value, then alert
-
 class AddOption extends React.Component{
-
   handleAddOption(e) {
     e.preventDefault()
-    const option = e.target.elements.option.value
+    const option = e.target.elements.option.value.trim()
     if (option) alert(option)
   }
-
   render() {
     return (
       <div>
         <form onSubmit={this.handleAddOption} >
           <input type="text" name="option" />
-          <button onClick={} >Add Option</button>
+          <button>Add Option</button>
         </form>
       </div>
     )
@@ -96,4 +105,4 @@ class AddOption extends React.Component{
 
 
 
-ReactDom.render(<IndecisionApp />, document.getElementById('app'))
+ReactDOM.render(<IndecisionApp />, document.getElementById('app'))
