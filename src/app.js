@@ -13,7 +13,7 @@ class IndecisionApp extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      options: []
+      options: props.options
     }
     this.handleDeleteOptions = this.handleDeleteOptions.bind(this)
     this.handlePick = this.handlePick.bind(this)
@@ -64,26 +64,22 @@ class IndecisionApp extends React.Component {
   }
 }
 
+IndecisionApp.defaultProps = {
+  options: []
+}
+
 const Header = (props) => {
   return (
     <div>
       <h1>{props.title}</h1>
-      <h2>{props.subtitle}</h2>
+      {props.subtitle && <h2>{props.subtitle}</h2>}
     </div>
   )
 }
 
-// class Header extends React.Component {
-//   render () {
-//     this.props
-//     return (
-//       <div>
-//         <h1>{this.props.title}</h1>
-//         <h2>{this.props.subtitle}</h2>
-//       </div>
-//     )
-//   }
-// }
+Header.defaultProps = {
+  title: 'Indecision'
+}
 
 const Actions = (props) => {
   return (
@@ -98,21 +94,6 @@ const Actions = (props) => {
   )
 }
 
-// class Actions extends React.Component {
-//   render () {
-//     return (
-//       <div>
-//         <button
-//           onClick={this.props.handlePick}
-//           disabled={!this.props.hasOptions}
-//         >
-//           What should I do?
-//         </button>
-//       </div>
-//     )
-//   }
-// }
-
 const Options = (props) => {
   return (
     <div>
@@ -126,21 +107,6 @@ const Options = (props) => {
   )
 }
 
-// class Options extends React.Component {
-//   render () {
-//     return (
-//       <div>
-//         <button onClick={this.props.handleDeleteOptions} >Remove All</button>
-//         {
-//           this.props.options.map(option =>
-//             <Option key={option} text={option} />
-//           )
-//         }
-//       </div>
-//     )
-//   }
-// }
-
 const Option = (props) => {
   return (
     <div>
@@ -148,16 +114,6 @@ const Option = (props) => {
     </div>
   )
 }
-
-// class Option extends React.Component {
-//   render () {
-//     return (
-//       <div>
-//         {this.props.text}
-//       </div>
-//     )
-//   }
-// }
 
 class AddOption extends React.Component {
   constructor (props) {
@@ -186,14 +142,4 @@ class AddOption extends React.Component {
   }
 }
 
-// const User = (props) => {
-//   return (
-//     <div>
-//       <p>Name: {props.name}</p>
-//       <p>Age: {props.age}</p>
-//     </div>
-//   )
-// }
-// ReactDOM.render(<User name="Andrew" age={26} />, document.getElementById('app'))
-
-ReactDOM.render(<IndecisionApp />, document.getElementById('app'))
+ReactDOM.render(<IndecisionApp options={['option one', 'option two']}/>, document.getElementById('app'))
