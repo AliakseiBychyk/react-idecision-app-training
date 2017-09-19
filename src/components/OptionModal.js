@@ -4,6 +4,7 @@ import Modal from 'react-modal'
 const OptionModal = (props) => (
   <Modal
     isOpen={!!props.selectedOption}
+    onRequestClose={props.handleCloseModal}
     contentLabel="Selected Option"
   >
     <h3>Selected Option</h3>
@@ -15,7 +16,3 @@ const OptionModal = (props) => (
 )
 
 export default OptionModal
-
-// Create a new event handler in IndecisionApp that clears selectedOption state
-// Pass that into OptionModal
-// Call it on button click

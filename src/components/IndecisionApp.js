@@ -62,7 +62,7 @@ export default class IndecisionApp extends Component {
     }
   }
 
-  handleCloseModal = () => {
+  handleClearSelectedOption = () => {
     this.setState({
       selectedOption: null
     })
@@ -90,7 +90,7 @@ export default class IndecisionApp extends Component {
         />
         <OptionModal
           selectedOption={this.state.selectedOption}
-          handleCloseModal={this.handleCloseModal}
+          handleCloseModal={this.handleClearSelectedOption}
         />
       </div>
     )
