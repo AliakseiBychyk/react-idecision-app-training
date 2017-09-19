@@ -7,7 +7,10 @@ import Options from './Options'
 import OptionModal from './OptionModal'
 
 export default class IndecisionApp extends Component {
-  state = { options: [] }
+  state = {
+    options: [],
+    selectedOption: undefined
+  }
 
   componentDidMount() {
     try {
@@ -44,7 +47,7 @@ export default class IndecisionApp extends Component {
   handlePick = () => {
     const randomNum = Math.floor(Math.random() * this.state.options.length)
     const option = this.state.options[randomNum]
-    alert(option)
+    this.setState({ selectedOption: option })
   }
   
   handleAddOption = (option) => {
@@ -54,9 +57,15 @@ export default class IndecisionApp extends Component {
       return 'This option is already exist'
     } else {
       this.setState({
-        options: [...this.state.options, option] // this.state.options.concate([option])
+        options: [...this.state.options, option]
       })
     }
+  }
+
+  handleCloseModal = () => {
+    this.setState({
+      selectedOption: null
+    })
   }
   
   render () {
@@ -79,7 +88,10 @@ export default class IndecisionApp extends Component {
         <AddOption
           handleAddOption={this.handleAddOption}
         />
-        <OptionModal />
+        <OptionModal
+          selectedOption={this.state.selectedOption}
+          handleCloseModal={this.handleCloseModal}
+        />
       </div>
     )
   }
