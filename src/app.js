@@ -19,7 +19,8 @@ class OldSyntax {
   }
 }
 const oldSyntax = new OldSyntax()
-console.log(oldSyntax.getGreeting())
+const oldGetGreeting = oldSyntax.getGreeting
+console.log(oldGetGreeting())  // won't work without binding
 
 // -------------------
 
@@ -31,4 +32,5 @@ class NewSyntax {
   }
 }
 const newSyntax = new NewSyntax()
-console.log(newSyntax.getGreeting())
+const newGetGreeting = newSyntax.getGreeting
+console.log(newGetGreeting())
